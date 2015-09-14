@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/startDateButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/ic_datepicker"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/startDateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/startDateButton"
+        android:freezesText="true"
+        android:hint="@string/startDate"
+        android:editable="false"/>
+
+    <ImageButton
+        android:id="@+id/endDateButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/startDateEditText"
+        android:src="@mipmap/ic_datepicker"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/endDateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startDateEditText"
+        android:layout_toLeftOf="@id/endDateButton"
+        android:freezesText="true"
+        android:hint="@string/endDate"
+        android:editable="false"/>
+
+    <Button
+        android:id="@+id/getPhoCallsHistoryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/endDateEditText"
+        android:text="@string/phoneCallsHistory" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/getPhoCallsHistoryButton">
+
+        <TextView
+            android:id="@+id/callLogTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:freezesText="true"/>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Phone Call History</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="startDate">Start date</string>
+    <string name="endDate">End date</string>
+    <string name="phoneCallsHistory">Get history</string>
+</resources>
