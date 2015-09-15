@@ -1,4 +1,4 @@
-package lania.com.mx.calllog;
+package lania.com.mx.calllog.fragments;
 
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -25,8 +25,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import lania.com.mx.calllog.CallLogApplication;
+import lania.com.mx.calllog.R;
 import lania.com.mx.calllog.events.SelectionDateEvent;
-import lania.com.mx.calllog.fragments.DatePickerFragment;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -121,6 +122,7 @@ public class MainActivityFragment extends Fragment {
         int type = managedCursor.getColumnIndex(CallLog.Calls.TYPE);
         int date = managedCursor.getColumnIndex(CallLog.Calls.DATE);
         int duration = managedCursor.getColumnIndex(CallLog.Calls.DURATION);
+        int nameIndex = managedCursor.getColumnIndex(CallLog.Calls.CACHED_NAME);
 
         sb.append("Call Details :");
         StringBuffer result = new StringBuffer();
@@ -132,6 +134,7 @@ public class MainActivityFragment extends Fragment {
             if (callDayTime.compareTo(startDate)>=0 && callDayTime.compareTo(endDate) < 0) {
                 String phNumber = managedCursor.getString(number);
                 String callType = managedCursor.getString(type);
+                String name = managedCursor.getString(nameIndex);
 
                 String callDuration = managedCursor.getString(duration);
                 String dir = null;
@@ -150,11 +153,11 @@ public class MainActivityFragment extends Fragment {
                         break;
                 }
 
-                String phoneCall = String.format("%s\t%s\t%s\t%s\t%s\n", formatCallDate(callDayTime), "Clerks", phNumber, "Company x", "Android developer");
+                String phoneCall = String.format("%s\t%s\t%s\t%s\t%s\n", formatCallDate(callDayTime), formatName(name), phNumber, "Company x", "Android developer");
                 result.append(phoneCall);
                 System.out.println(phoneCall);
 
-                sb.append("\nPhone Number:--- " + phNumber + " \nCall Type:--- "
+                sb.append("\nPhone Number:--- " + phNumber+ " \nName:--- "+formatName(name)+ " \nCall Type:--- "
                         + dir + " \nCall Date:--- " + callDayTime
                         + " \nCall duration in sec :--- " + callDuration);
                 sb.append("\n----------------------------------");
@@ -164,6 +167,10 @@ public class MainActivityFragment extends Fragment {
         managedCursor.close();
         return sb.toString();
 
+    }
+
+    private String formatName(String name) {
+        return (name == null || "null".equals(name)) ? "Anonymous" : name;
     }
 
     private void writeFile (String data) {

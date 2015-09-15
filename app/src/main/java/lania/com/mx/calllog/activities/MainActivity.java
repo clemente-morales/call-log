@@ -1,9 +1,11 @@
-package lania.com.mx.calllog;
+package lania.com.mx.calllog.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import lania.com.mx.calllog.R;
 
 public class MainActivity extends Activity{
 
