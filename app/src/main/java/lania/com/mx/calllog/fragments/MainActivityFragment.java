@@ -23,11 +23,13 @@ import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import lania.com.mx.calllog.CalendarHelper;
 import lania.com.mx.calllog.CallLogApplication;
 import lania.com.mx.calllog.R;
 import lania.com.mx.calllog.events.SelectionDateEvent;
+import lania.com.mx.calllog.models.PhoneCall;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -123,6 +125,14 @@ public class MainActivityFragment extends Fragment {
         DialogFragment newFragment = DatePickerFragment.newInstance(invoker);
         newFragment.show(getActivity().getFragmentManager(), "datePicker");
     }
+
+
+
+    private List<PhoneCall> getPhoneCallHistory() {
+        // TODO return Array List to full fill the listview
+        return null;
+    }
+
 
     private String getCallDetails() {
         StringBuffer sb = new StringBuffer();

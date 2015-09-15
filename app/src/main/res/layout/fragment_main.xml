@@ -51,6 +51,10 @@
         android:layout_below="@id/endDateEditText"
         android:text="@string/phoneCallsHistory" />
 
+
+    <!--Add List view to display the phone calls and delete the next controls-->
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
