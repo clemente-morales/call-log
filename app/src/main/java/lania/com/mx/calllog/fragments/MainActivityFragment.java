@@ -23,8 +23,8 @@ import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
+import lania.com.mx.calllog.CalendarHelper;
 import lania.com.mx.calllog.CallLogApplication;
 import lania.com.mx.calllog.R;
 import lania.com.mx.calllog.events.SelectionDateEvent;
@@ -68,7 +68,17 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void loadDefaultValues() {
-        Calendar calendar = GregorianCalendar.getInstance();
+        Calendar calendarBeginingOfDate = CalendarHelper.getCalendarToBeginingOfCurrentDate();
+        Calendar calendarEndOfDate = CalendarHelper.getCalendarToEndOfCurrentDate();
+
+        startDate = calendarBeginingOfDate.getTime();
+        displayDate(startDate, R.id.startDateEditText);
+
+        endDate = calendarEndOfDate.getTime();
+        displayDate(startDate, R.id.endDateEditText);
+        Log.d(TAG, "startDate"+startDate);
+        Log.d(TAG, "endDate"+endDate);
+        getPhoneCallsHistory();
     }
 
     @Override
@@ -99,7 +109,7 @@ public class MainActivityFragment extends Fragment {
         }
 
         if (endDate==null) {
-            Calendar calendar = GregorianCalendar.getInstance();
+            Calendar calendar = CalendarHelper.getCalendarToEndOfCurrentDate();
             endDate = calendar.getTime();
             Toast.makeText(getActivity(), "You didn't select an end date. We took the current date.", Toast.LENGTH_SHORT).show();
         }
@@ -198,9 +208,6 @@ public class MainActivityFragment extends Fragment {
 
     @Subscribe
     public void onDateSelected(SelectionDateEvent event) {
-        Log.d(TAG, String.format("Invoker %d Date %s", event.getInvoker(), event.getSelectedDate()));
-        Log.d(TAG, String.format("StartDateId %d EndDateId %d", R.id.startDateButton, R.id.endDateButton));
-
         if (event.getInvoker() == R.id.startDateButton) {
             this.startDate = event.getSelectedDate();
             displayDate(startDate, R.id.startDateEditText);
