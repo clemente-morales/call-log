@@ -10,6 +10,7 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import lania.com.mx.calllog.CalendarHelper;
 import lania.com.mx.calllog.CallLogApplication;
 import lania.com.mx.calllog.events.SelectionDateEvent;
 
@@ -56,12 +57,8 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        final Calendar calendar = GregorianCalendar.getInstance();
+        final Calendar calendar = CalendarHelper.getCalendarToBeginingOfCurrentDate();
         calendar.set(year, month, day);
-
-        Log.d(TAG, "invoker " + invoker);
-        Log.d(TAG, "date "+calendar.getTime());
-
         CallLogApplication.getEventBus().post(new SelectionDateEvent(invoker, calendar.getTime()));
     }
 }

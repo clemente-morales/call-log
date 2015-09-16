@@ -78,8 +78,8 @@ public class MainActivityFragment extends Fragment {
 
         endDate = calendarEndOfDate.getTime();
         displayDate(startDate, R.id.endDateEditText);
-        Log.d(TAG, "startDate"+startDate);
-        Log.d(TAG, "endDate"+endDate);
+        Log.d(TAG, "startDate" + startDate);
+        Log.d(TAG, "endDate" + endDate);
         getPhoneCallsHistory();
     }
 
@@ -105,12 +105,12 @@ public class MainActivityFragment extends Fragment {
     }
 
     public void getPhoneCallsHistory() {
-        if (startDate==null) {
+        if (startDate == null) {
             Toast.makeText(getActivity(), "You need to select the start date", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (endDate==null) {
+        if (endDate == null) {
             Calendar calendar = CalendarHelper.getCalendarToEndOfCurrentDate();
             endDate = calendar.getTime();
             Toast.makeText(getActivity(), "You didn't select an end date. We took the current date.", Toast.LENGTH_SHORT).show();
@@ -125,7 +125,6 @@ public class MainActivityFragment extends Fragment {
         DialogFragment newFragment = DatePickerFragment.newInstance(invoker);
         newFragment.show(getActivity().getFragmentManager(), "datePicker");
     }
-
 
 
     private List<PhoneCall> getPhoneCallHistory() {
@@ -147,11 +146,15 @@ public class MainActivityFragment extends Fragment {
         sb.append("Call Details :");
         StringBuffer result = new StringBuffer();
 
+
         while (managedCursor.moveToNext()) {
             String callDate = managedCursor.getString(date);
             Date callDayTime = new Date(Long.valueOf(callDate));
 
-            if (callDayTime.compareTo(startDate)>=0 && callDayTime.compareTo(endDate) < 0) {
+            Calendar calendar = CalendarHelper.dateToCalendar(callDayTime);
+            CalendarHelper.calendarToBeginingOfDate(calendar);
+
+            if (calendar.getTime().compareTo(startDate) >= 0 && calendar.getTime().compareTo(endDate) <= 0) {
                 String phNumber = managedCursor.getString(number);
                 String callType = managedCursor.getString(type);
                 String name = managedCursor.getString(nameIndex);
@@ -177,7 +180,7 @@ public class MainActivityFragment extends Fragment {
                 result.append(phoneCall);
                 System.out.println(phoneCall);
 
-                sb.append("\nPhone Number:--- " + phNumber+ " \nName:--- "+formatName(name)+ " \nCall Type:--- "
+                sb.append("\nPhone Number:--- " + phNumber + " \nName:--- " + formatName(name) + " \nCall Type:--- "
                         + dir + " \nCall Date:--- " + callDayTime
                         + " \nCall duration in sec :--- " + callDuration);
                 sb.append("\n----------------------------------");
@@ -193,8 +196,8 @@ public class MainActivityFragment extends Fragment {
         return (name == null || "null".equals(name)) ? "Anonymous" : name;
     }
 
-    private void writeFile (String data) {
-        try{
+    private void writeFile(String data) {
+        try {
             File myFile = new File("/sdcard/phoneCalls.txt");
             myFile.createNewFile();
             FileOutputStream fOut = new FileOutputStream(myFile);
@@ -202,18 +205,19 @@ public class MainActivityFragment extends Fragment {
             myOutWriter.append(data);
             myOutWriter.close();
             fOut.close();
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
     }
 
     private int getDateOfMonth(Date callDayTime) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd");
-        return  Integer.parseInt(sdf.format(callDayTime));
+        return Integer.parseInt(sdf.format(callDayTime));
     }
 
     private String formatCallDate(Date callDayTime) {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
-        return  sdf.format(callDayTime);
+        return sdf.format(callDayTime);
     }
 
     @Subscribe
