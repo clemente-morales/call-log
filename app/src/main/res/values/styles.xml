@@ -5,11 +5,14 @@
         <item name="android:colorPrimary">@color/primary</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorAccent">@color/accent</item>
-        <item name="android:toolbarStyle">@style/toolbar</item>
     </style>
 
     <style name="toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/primary_light</item>
         <item name="android:popupTheme">@style/Theme.AppCompat.Light</item>
+        <item name="android:popupBackground">@color/primary_light</item>
     </style>
 </resources>
