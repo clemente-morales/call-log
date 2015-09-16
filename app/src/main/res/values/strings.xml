@@ -5,4 +5,12 @@
     <string name="startDate">Start date</string>
     <string name="endDate">End date</string>
     <string name="phoneCallsHistory">Get history</string>
+
+    <string name="phoneCallsHistorySettings_timeToSendPhoneCallHistoryKey">timeToSendPhoneCallHistory</string>
+    <string name="phoneCallsHistorySettings_title">Sender history settings</string>
+    <string name="phoneCallsHistorySettings_timeToSendPhoneCallHistory">Time</string>
+    <string name="phoneCallsHistorySettings_timeToSendPhoneCallHistorySummary">Schedule the time to send phone call history to the selected email every day.</string>
+    <string name="phoneCallsHistorySettings_emailToSendPhoneCallHistoryKey">emailToSendPhoneCallHistory</string>
+    <string name="phoneCallsHistorySettings_emailToSendPhoneCallHistory">Email</string>
+    <string name="phoneCallsHistorySettings_emailToSendPhoneCallHistorySummary">Add the email to send phone call history</string>
 </resources>

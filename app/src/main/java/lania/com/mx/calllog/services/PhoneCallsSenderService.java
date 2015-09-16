@@ -1,11 +1,15 @@
 package lania.com.mx.calllog.services;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import lania.com.mx.calllog.R;
 import lania.com.mx.calllog.helpers.PhoneCallHistoryAlarmManager;
 import lania.com.mx.calllog.receivers.AlarmReceiver;
 
@@ -21,17 +25,26 @@ public class PhoneCallsSenderService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.d(TAG, "Sending phone call history to Joshua");
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String emailKey = getString(R.string.phoneCallsHistorySettings_emailToSendPhoneCallHistoryKey);
+        String email = sharedPreferences.getString(emailKey, "defaultEmail");
+        Log.d(TAG, "Sending phone call history to "+email);
+
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(android.R.drawable.ic_popup_sync)
+                        .setSmallIcon(android.R.drawable.stat_notify_sync)
                         .setContentTitle("Phone call history")
-                        .setContentText("Phone call history send to Joshua!");
+                        .setContentText(String.format("Phone call history send to %s!", email));
 
-        int mNotificationId = 001;
+        int mNotificationId = 0;
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+        Notification notification = mBuilder.build();
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        mNotifyMgr.notify(mNotificationId, notification);
+
+        Log.d(TAG, "phone call history sent to " + email);
 
         // Release the wake lock provided by the AlarmReceiver.
         AlarmReceiver.completeWakefulIntent(intent);

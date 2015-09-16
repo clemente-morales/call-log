@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <PreferenceCategory android:title="@string/phoneCallsHistorySettings_title">
+        <Preference
+            android:key="@string/phoneCallsHistorySettings_timeToSendPhoneCallHistoryKey"
+            android:summary="@string/phoneCallsHistorySettings_timeToSendPhoneCallHistorySummary"
+            android:title="@string/phoneCallsHistorySettings_timeToSendPhoneCallHistory" />
+        <EditTextPreference
+            android:key="@string/phoneCallsHistorySettings_emailToSendPhoneCallHistoryKey"
+            android:summary="@string/phoneCallsHistorySettings_emailToSendPhoneCallHistorySummary"
+            android:title="@string/phoneCallsHistorySettings_emailToSendPhoneCallHistory"
+            android:inputType="textEmailAddress"></EditTextPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

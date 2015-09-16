@@ -20,14 +20,9 @@ public final class PhoneCallHistoryAlarmManager {
 
     public static void setAlarm(Context contex) {
         SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(contex);
-        boolean isFirstRun = wmbPreference.getBoolean("isFirstRun", true);
-        boolean isSendingInformationEnabled = wmbPreference.getBoolean("isSendingInformationEnabled", false);
+        boolean isSendingInformationEnabled = wmbPreference.getBoolean("isSendingInformationEnabled", true);
 
-        if (isFirstRun && isSendingInformationEnabled) {
-            SharedPreferences.Editor editor = wmbPreference.edit();
-            editor.putBoolean("isFirstRun", false);
-            editor.commit();
-
+        if (isSendingInformationEnabled) {
             launchAlarm(contex);
         }
     }

@@ -136,7 +136,7 @@ public class MainActivityFragment extends Fragment {
 
     private String getCallDetails() {
         StringBuffer sb = new StringBuffer();
-        Cursor managedCursor = getActivity().managedQuery(CallLog.Calls.CONTENT_URI, null,
+        Cursor managedCursor = getActivity().getContentResolver().query(CallLog.Calls.CONTENT_URI, null,
                 null, null, null);
         int number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
         int type = managedCursor.getColumnIndex(CallLog.Calls.TYPE);
