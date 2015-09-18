@@ -12,5 +12,15 @@
             android:summary="@string/phoneCallsHistorySettings_emailToSendPhoneCallHistorySummary"
             android:title="@string/phoneCallsHistorySettings_emailToSendPhoneCallHistory"
             android:inputType="textEmailAddress"></EditTextPreference>
+        <EditTextPreference
+            android:key="@string/phoneCallsHistorySettings_emailFromKey"
+            android:summary="@string/phoneCallsHistorySettings_emailFromSummary"
+            android:title="@string/phoneCallsHistorySettings_emailFromTitle"
+            android:inputType="textEmailAddress"></EditTextPreference>
+        <EditTextPreference
+            android:key="@string/phoneCallsHistorySettings_emailFromPasswordKey"
+            android:summary="@string/phoneCallsHistorySettings_emailFromPasswordSummary"
+            android:title="@string/phoneCallsHistorySettings_emailFromPasswordTitle"
+            android:inputType="textPassword"></EditTextPreference>
     </PreferenceCategory>
 </PreferenceScreen>

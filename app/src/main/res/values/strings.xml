@@ -12,5 +12,11 @@
     <string name="phoneCallsHistorySettings_timeToSendPhoneCallHistorySummary">Schedule the time to send phone call history to the selected email every day.</string>
     <string name="phoneCallsHistorySettings_emailToSendPhoneCallHistoryKey">emailToSendPhoneCallHistory</string>
     <string name="phoneCallsHistorySettings_emailToSendPhoneCallHistory">Email</string>
-    <string name="phoneCallsHistorySettings_emailToSendPhoneCallHistorySummary">Add the email to send phone call history</string>
+    <string name="phoneCallsHistorySettings_emailToSendPhoneCallHistorySummary">Add the email to send the phone call history</string>
+    <string name="phoneCallsHistorySettings_emailFromKey">emailFromToSendPhoneCallHistory</string>
+    <string name="phoneCallsHistorySettings_emailFromPasswordKey">passwordFromEmailToSendPhoneCallHistory</string>
+    <string name="phoneCallsHistorySettings_emailFromSummary">Select email to use as from in the email</string>
+    <string name="phoneCallsHistorySettings_emailFromTitle">From </string>
+    <string name="phoneCallsHistorySettings_emailFromPasswordTitle">Email From Password</string>
+    <string name="phoneCallsHistorySettings_emailFromPasswordSummary">Password for the From email. Select only if you haven\'t configure an email account in your phone</string>
 </resources>

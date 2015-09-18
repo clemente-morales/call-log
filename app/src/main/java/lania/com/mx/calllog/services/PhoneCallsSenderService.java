@@ -59,13 +59,22 @@ public class PhoneCallsSenderService extends IntentService {
 
     private boolean sendEmail(String email) {
         boolean messageSent = false;
-        Email m = new Email("morales.fernandez.clemente@gmail.com", "");
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String emailFromKey = getString(R.string.phoneCallsHistorySettings_emailFromKey);
+        String fromEmail = sharedPreferences.getString(emailFromKey, "morales.fernandez.clemente@gmail.com");
+        String passwordFromKey = getString(R.string.phoneCallsHistorySettings_emailFromPasswordKey);
+        String passwordFromEmail = sharedPreferences.getString(passwordFromKey , "DefaultPassword");
+
+        Log.d(TAG, String.format("From %s Password %s",fromEmail, passwordFromEmail));
+
+        Email m = new Email(fromEmail, passwordFromEmail);
 
         String[] toArr = {email, "morales.clements@gmail.com"};
         m.setTo(toArr);
-        m.setFrom("morales.fernandez.clemente@gmail.com");
+        m.setFrom(fromEmail);
         m.setSubject("Phone call history.");
-        m.setBody("Hi, I attach phone call history.");
+        m.setBody("The phone call history is attached in the email.");
 
         try {
             m.addAttachment("/sdcard/phoneCalls.txt");

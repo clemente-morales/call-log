@@ -141,6 +141,7 @@ public class MainActivityFragment extends Fragment {
         int duration = managedCursor.getColumnIndex(CallLog.Calls.DURATION);
         int nameIndex = managedCursor.getColumnIndex(CallLog.Calls.CACHED_NAME);
 
+
         sb.append("Call Details :");
         StringBuffer result = new StringBuffer();
 
