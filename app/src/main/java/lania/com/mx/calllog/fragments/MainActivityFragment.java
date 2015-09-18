@@ -5,7 +5,6 @@ import android.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.CallLog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,8 +64,9 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-        loadDefaultValues();
-
+        if (startDate == null && endDate == null) {
+            loadDefaultValues();
+        }
     }
 
     private void loadDefaultValues() {
@@ -78,8 +78,6 @@ public class MainActivityFragment extends Fragment {
 
         endDate = calendarEndOfDate.getTime();
         displayDate(startDate, R.id.endDateEditText);
-        Log.d(TAG, "startDate" + startDate);
-        Log.d(TAG, "endDate" + endDate);
         getPhoneCallsHistory();
     }
 
