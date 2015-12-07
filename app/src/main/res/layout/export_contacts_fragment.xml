@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/taskProgressBar"
+        android:indeterminate="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/exportContactsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/export_contacts"/>
+
+    <Button
+        android:id="@+id/importContactsButton"
+        android:layout_below="@id/exportContactsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/import_contacts"/>
+
+
+</RelativeLayout>

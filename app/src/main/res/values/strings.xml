@@ -6,6 +6,7 @@
     <string name="endDate">End date</string>
     <string name="phoneCallsHistory">Get history</string>
 
+    <string name="phoneCallHistoryTitle">Phone call history</string>
     <string name="phoneCallsHistorySettings_timeToSendPhoneCallHistoryKey">timeToSendPhoneCallHistory</string>
     <string name="phoneCallsHistorySettings_title">Sender history settings</string>
     <string name="phoneCallsHistorySettings_timeToSendPhoneCallHistory">Time</string>
@@ -19,4 +20,6 @@
     <string name="phoneCallsHistorySettings_emailFromTitle">From </string>
     <string name="phoneCallsHistorySettings_emailFromPasswordTitle">Email From Password</string>
     <string name="phoneCallsHistorySettings_emailFromPasswordSummary">Password for the From email. Select only if you haven\'t configure an email account in your phone</string>
+    <string name="export_contacts">Export contacts</string>
+    <string name="import_contacts">Import contacts</string>
 </resources>
