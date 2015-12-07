@@ -51,7 +51,7 @@ public final class ContactsHelper {
             while (cursor.moveToNext()) {
                 String lookupKey = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY));
                 String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                if (!contactsIncluded.contains(lookupKey)) {
+                if (!contactsIncluded.contains(name)) {
                     Log.d(TAG, String.format("name %s lookupKey  %s", name, lookupKey));
                     if (index > 0 && (index % boundary) == 0) {
                         Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_MULTI_VCARD_URI,
@@ -67,7 +67,7 @@ public final class ContactsHelper {
                         uriListBuilder.append(':');
 
                     uriListBuilder.append(lookupKey);
-                    contactsIncluded.add(lookupKey);
+                    contactsIncluded.add(name);
                     index++;
                 }
 
